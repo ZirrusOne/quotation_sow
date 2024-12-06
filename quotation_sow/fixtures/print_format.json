@@ -1,0 +1,33 @@
+[
+ {
+  "absolute_value": 0,
+  "align_labels_right": 0,
+  "css": null,
+  "custom_format": 1,
+  "default_print_language": "en",
+  "disabled": 0,
+  "doc_type": "Quotation",
+  "docstatus": 0,
+  "doctype": "Print Format",
+  "font": null,
+  "font_size": 14,
+  "format_data": null,
+  "html": "<html>\n    <head>\n        <style>\n            .table-bordered td.top-bottom {border-top: none !important;border-bottom: none !important;}\n            .table-bordered td.right{border-right: none !important;}\n            .table-bordered td.left{border-left: none !important;}\n        </style>\n    </head>\n    <body>\n        <div>\n            <img src=\"/assets/z1n_core/images/z1n_favicon.png\", alt=\"Company Logo\" width=\"100\" height=\"100\" style=\"display: block; margin: 10px auto;\">\n\n            <h1 class=\"text-center\" >{{ _(\"STATEMENT OF WORK\") }}</h1>\n            <h3>Introduction</h3>\n            <p>________________________________________________________________________________</p>\n\n            <h6>This Statement of Work (“SOW”) is entered into as of \n            {{ frappe.utils.format_date(doc.transaction_date) }}, 2024 (“SOW Effective Date”) by and between Zirrus One, a Delaware limited liability corporation and consulting firm (“Zirrus One”), having a principal place of business at having a principal place of business at 310 E Main St. Suite 19, Belleville, IL 62220 and {{ doc.customer_name }}. </h6>\n        </div>\n        <div>\n            {% for row in doc.custom_sow_section_item %}\n                <h3>{{ row.section }}</h3>\n                <p>__________________________________________________________________________________</p>\n                <table class=\"table table-bordered table-hover\">\n                    <tr>\n                        <th>Item Name</th>\n                        <th>Description</th>\n                    </tr>\n                    <tr>\n                        <td>{{ row.item_name }}</td>\n                        {% if row.description %}<td>{{ row.description }} </td> {% endif %}\n                    </tr>\n                </table>\n            {% endfor %}\n        </div>\n        <div>\n            <br>\n            <h3>Pricing</h3>\n            <p>______________________________________________________________________________</p>\n            <table class=\"table table-bordered table-hover\">\n                <tr>\n                    <th>Item Code</th>\n                    <th>Quantity</th>\n                    <th>UOM</th>\n                    <th>Discount Amount</th>\n                    <th>Rate</th>\n                    <th>Amount</th>\n                </tr>\n                {% for item in doc.items %}\n                <tr>\n                    <td>{{ item.item_code }}</td>\n                    <td>{{ item.qty }}</td>\n                    <td>{{ item.uom }}</td>\n                    <td>{{ frappe.utils.fmt_money(item.discount_amount or '', currency=doc.currency) }}</td>\n                    <td>{{ frappe.utils.fmt_money(item.rate or '', currency=doc.currency) }}</td>\n                    <td>{{ frappe.utils.fmt_money(item.amount or '', currency=doc.currency) }}</td>\n\n                </tr>\n                {% endfor %}\n            </table>\n        </div>\n\n        <div>\n            <br>\n            <h3>STATEMENT OF WORK ACCEPTANCE</h3>\n            <p>______________________________________________________________________________</p>\n\n          \n                IN WITNESS WHEREOF, the parties hereto have caused this Statement of Work to be executed by their duly authorized representatives as of the SOW Effective Date set forth above.\n \n                Agreement Effective Date: SOW Signature\n            <div class=\"row\">\n                <div class=\"col-xs-4\">ANTRONIX</div>\n                <div class=\"col-xs-3\"></div>\n                <div class=\"col-xs-4\"> ZIRRUS ONE, LLC.</div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-xs-4\">By _______________________</div>\n                <div class=\"col-xs-3\"></div>\n                <div class=\"col-xs-4\">By _______________________</div>\n            </div>\n             <div class=\"row\">\n                <div class=\"col-xs-4\">Name ____________________</div>\n                <div class=\"col-xs-3\"></div>\n                <div class=\"col-xs-4\">Name ____________________</div>\n            </div>\n             <div class=\"row\">\n                <div class=\"col-xs-4\">Title _____________________</div>\n                <div class=\"col-xs-3\"></div>\n                <div class=\"col-xs-4\">Title _____________________</div>\n            </div>\n             <div class=\"row\">\n                <div class=\"col-xs-4\">Date _____________________</div>\n                <div class=\"col-xs-3\"></div>\n                <div class=\"col-xs-4\">Date _____________________</div>\n            </div>\n        </div>\n        \n    </body>\n    \n</html>\n\n\n",
+  "line_breaks": 0,
+  "margin_bottom": 15.0,
+  "margin_left": 15.0,
+  "margin_right": 15.0,
+  "margin_top": 15.0,
+  "modified": "2024-12-05 22:58:26.969870",
+  "module": "Selling",
+  "name": "Statement Of Work",
+  "page_number": "Hide",
+  "print_format_builder": 0,
+  "print_format_builder_beta": 0,
+  "print_format_type": "Jinja",
+  "raw_commands": null,
+  "raw_printing": 0,
+  "show_section_headings": 0,
+  "standard": "Yes"
+ }
+]
